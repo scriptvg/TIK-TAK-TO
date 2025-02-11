@@ -4,8 +4,8 @@ class TicTacToe {
         this.currentPlayer = 'X';
         this.gameActive = false;
         this.gameMode = null;
-        this.player1 = { name: '', icon: '🦁' };
-        this.player2 = { name: '', icon: '🐼' };
+        this.player1 = { name: '', icon: 'X' };
+        this.player2 = { name: '', icon: 'O' };
 
         // DOM Elements
         this.setupScreen = document.getElementById('setup-screen');
@@ -55,7 +55,7 @@ class TicTacToe {
         if (mode === 'ai') {
             this.player2Section.classList.add('hidden');
             this.player2.name = 'AI';
-            this.player2.icon = '🤖';
+            this.player2.icon = 'O';
         } else {
             this.player2Section.classList.remove('hidden');
         }
@@ -122,13 +122,13 @@ class TicTacToe {
 
         if (this.checkWin()) {
             const winner = this.currentPlayer === 'X' ? this.player1.name : this.player2.name;
-            this.status.textContent = `${winner} wins!`;
+            this.status.textContent = `${winner} Ganaste!`;
             this.gameActive = false;
             return;
         }
 
         if (this.checkDraw()) {
-            this.status.textContent = "It's a draw!";
+            this.status.textContent = "Es un empate!";
             this.gameActive = false;
             return;
         }
