@@ -1,3 +1,26 @@
+:root {
+    --primary-color: #4CAF50;
+    --primary-hover: #45a049;
+    --secondary-color: #007bff;
+    --secondary-hover: #0056b3;
+    --tertiary-color: #3498db;
+    --tertiary-hover: #2980b9;
+    --background-color: #f0f2f5;
+    --text-color: #333;
+    --border-color: #ddd;
+    --cell-bg-color: #f0f0f0;
+    --cell-border-color: #e0e0e0;
+    --white: #fff;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --font-size-normal: 16px;
+    --font-size-large: 20px;
+    --font-size-xlarge: 40px;
+    --border-radius: 5px;
+    --border-radius-large: 10px;
+    --border-radius-xlarge: 15px;
+    --transition-speed: 0.3s;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -10,10 +33,10 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f0f2f5;
+    background-color: var(--background-color);
 }
 
-.container {
+.cont {
     text-align: center;
     max-width: 600px;
     width: 100%;
@@ -21,7 +44,7 @@ body {
 }
 
 h1 {
-    color: #333;
+    color: var(--text-color);
     margin-bottom: 20px;
 }
 
@@ -29,86 +52,79 @@ h1 {
     display: none !important;
 }
 
-/* Setup Screen Styles */
-.mode-selection {
+.pantalla-de-configuracion, .seleccion-de-modo {
     margin-bottom: 20px;
 }
 
-.mode-selection button {
+.pant-config {
+    background-color: var(--white);
+    border-radius: var(--border-radius-large);
+    box-shadow: 0 4px 6px var(--shadow-color);
+    padding: 30px;
+}
+
+.selec-modo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.btn-modo {
     padding: 10px 20px;
     margin: 0 10px;
-    font-size: 16px;
+    font-size: var(--font-size-normal);
     cursor: pointer;
-    background-color: #4CAF50;
-    color: white;
+    background-color: var(--primary-color);
+    color: var(--white);
     border: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+    border-radius: var(--border-radius);
+    transition: background-color var(--transition-speed);
 }
 
-.mode-selection button:hover {
-    background-color: #45a049;
+.btn-modo:hover {
+    background-color: var(--primary-hover);
 }
 
-.player-setup {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+.config-jugadores {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-.player-input {
-    margin-bottom: 20px;
-    text-align: left;
+.entrada-jugador {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.player-input label {
-    display: block;
-    margin-bottom: 5px;
-    color: #333;
+.entrada-jugador label {
     font-weight: bold;
+    color: var(--text-color);
 }
 
-.player-input input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
+.entrada-jugador input, 
+.entrada-jugador select {
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
 }
 
-.icon-selection {
-    margin-top: 10px;
-}
-
-.icon-selection select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.start-btn {
-    padding: 12px 24px;
-    font-size: 16px;
-    background-color: #2196F3;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+.btn-iniciar {
     margin-top: 20px;
+    padding: 12px 24px;
+    background-color: var(--secondary-color);
+    color: var(--white);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color var(--transition-speed);
 }
 
-.start-btn:hover {
-    background-color: #1976D2;
+.btn-iniciar:hover {
+    background-color: var(--secondary-hover);
 }
 
-/* Game Screen Styles */
-.board {
+.tablero {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
@@ -116,41 +132,109 @@ h1 {
     max-width: 300px;
 }
 
-.cell {
-    background-color: white;
+.casilla {
+    background-color: var(--white);
     aspect-ratio: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 40px;
+    font-size: var(--font-size-xlarge);
     cursor: pointer;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: background-color 0.3s;
+    border-radius: var(--border-radius-large);
+    box-shadow: 0 2px 5px var(--shadow-color);
+    transition: background-color var(--transition-speed);
 }
 
-.cell:hover {
-    background-color: #f8f9fa;
+.casilla:hover {
+    background-color: var(--background-color);
 }
 
-.status {
+.estado {
     margin: 20px 0;
-    font-size: 20px;
-    color: #333;
+    font-size: var(--font-size-large);
+    color: var(--text-color);
     font-weight: bold;
 }
 
-.restart-btn {
+.btn-reiniciar {
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: var(--font-size-normal);
     cursor: pointer;
-    background-color: #3498db;
-    color: white;
+    background-color: var(--tertiary-color);
+    color: var(--white);
     border: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+    border-radius: var(--border-radius);
+    transition: background-color var(--transition-speed);
 }
 
-.restart-btn:hover {
-    background-color: #2980b9;
+.btn-reiniciar:hover {
+    background-color: var(--tertiary-hover);
+}
+
+.tablero-juego {
+    background-color: var(--white);
+    border-radius: var(--border-radius-xlarge);
+    box-shadow: 0 10px 25px var(--shadow-color);
+    padding: 30px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.grid-tablero {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.celda-tablero {
+    background-color: var(--cell-bg-color);
+    border: 3px solid var(--cell-border-color);
+    border-radius: var(--border-radius-large);
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+    color: var(--text-color);
+}
+
+.celda-tablero:hover {
+    background-color: var(--background-color);
+    transform: scale(1.05);
+}
+
+.celda-tablero.filled {
+    cursor: not-allowed;
+}
+
+.estado-juego {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+@media (max-width: 480px) {
+    .grid-tablero {
+        gap: 10px;
+    }
+    
+    .celda-tablero {
+        height: 80px;
+        font-size: 3rem;
+    }
+}
+
+@keyframes win-animation {
+    0% { background-color: var(--cell-bg-color); transform: scale(1); }
+    50% { background-color: var(--primary-color); transform: scale(1.1); }
+    100% { background-color: var(--cell-bg-color); transform: scale(1); }
+}
+
+.winning-cell {
+    animation: win-animation 1s infinite;
 }
